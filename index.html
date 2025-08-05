@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2 id="formTitle">Login</h2>
+    
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <p id="errorMsg" class="error-message"></p>
+      <button type="submit">Submit</button>
+    </form>
+
+    <p class="toggle">
+      <span id="toggleText">Don't have an account?</span>
+      <button id="toggleButton">Sign Up</button>
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

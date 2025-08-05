@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Task</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Create a New Task</h2>
+
+  <input type="text" id="taskName" placeholder="Task Name" /><br/><br/>
+
+  <label for="taskDifficulty"><strong>Task Difficulty:</strong></label><br/>
+  <select id="taskDifficulty">
+    <option>Easy</option>
+    <option>Medium</option>
+    <option>Hard</option>
+  </select><br/><br/>
+
+  <label for="taskImportance"><strong>Task Importance:</strong></label><br/>
+  <select id="taskImportance">
+    <option>Low</option>
+    <option>High</option>
+  </select><br/><br/>
+
+  <label for="dueDate"><strong>Due Date:</strong></label><br/>
+  <input type="date" id="dueDate" /><br/><br/>
+
+  <button onclick="saveTask()">Save Task</button>
+  <button onclick="history.back()">Back</button>
+
+  <script>
+    const user = localStorage.getItem("currentUser");
+    if (!user) location.href = "index.html";
+
+    function saveTask() {
+      const name = document.getElementById("taskName").value;
+      const difficulty = document.getElementById("taskDifficulty").value;
+      const importance = document.getElementById("taskImportance").value;
+      const dueDate = document.getElementById("dueDate").value;
+
+      if (!name || !dueDate) return alert("Please fill in all fields!");
+
+      const task = {
+        name,
+        difficulty,
+        importance,
+        dueDate,
+        completed: false
+      };
+
+      let tasks = JSON.parse(localStorage.getItem("tasks_" + user)) || [];
+      tasks.push(task);
+      localStorage.setItem("tasks_" + user, JSON.stringify(tasks));
+      alert("Task saved!");
+      document.getElementById("taskName").value = "";
+      document.getElementById("dueDate").value = "";
+    }
+  </script>
+</body>
+</html>

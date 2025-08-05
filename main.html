@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Welcome, <span id="userName"></span>!</h2>
+  <button onclick="location.href='create.html'">Create Task</button>
+  <button onclick="location.href='view.html'">View Tasks</button>
+  <button onclick="logout()">Logout</button>
+
+  <script src="logout.js"></script>
+  <script>
+    const user = localStorage.getItem("currentUser");
+    if (!user) window.location.href = "index.html";
+    document.getElementById("userName").textContent = user;
+  </script>
+</body>
+</html>
